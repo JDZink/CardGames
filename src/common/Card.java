@@ -47,6 +47,4 @@ public class Card implements Comparable<Card> {
             return rcompare;
     }
 	
-
-
 }

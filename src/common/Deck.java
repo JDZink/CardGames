@@ -2,22 +2,24 @@ package common;
 
 import java.util.*;
 
-public class Deck {
+public class Deck{
 	private List<Card> cardsInDeck;
+	private int cardsRemaining;
 
-	List<Card> getCardsInDeck() {
+	public List<Card> getCardsInDeck() {
 		return cardsInDeck;
 	}
 
-	void setCardsInDeck(List<Card> cardsInDeck) {
+	public void setCardsInDeck(List<Card> cardsInDeck) {
 		this.cardsInDeck = cardsInDeck;
 	}
 
 	public Deck(String type) {
+		int numCards = 0;
 		this.cardsInDeck = new ArrayList<>();
 		switch (type) {
-		case "pinnochle":
-			break;
+//		case "pinnochle":
+//			break;
 		case "poker":
 		default:
 			for (Suit s : Suit.values()) {
@@ -26,10 +28,20 @@ public class Deck {
 					cardsInDeck.add(new Card(r, s, i));
 					i++;
 				}
+				numCards += i ;
 			}
 			break;
 
 		}
+		this.setCardsRemaining(numCards);
+	}
+
+	public int getCardsRemaining() {
+		return cardsRemaining;
+	}
+
+	public void setCardsRemaining(int cardsRemaining) {
+		this.cardsRemaining = cardsRemaining;
 	}
 
 }
