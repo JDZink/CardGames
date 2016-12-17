@@ -9,23 +9,33 @@ import org.junit.Test;
 import common.Deck;
 
 public class BlackJackTest {
-	Deck deck;
+	Table table;
 
 	@Before
 	public void setUp() throws Exception {
-		deck = new Deck("poker");
+		table = new Table();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		deck = null;
+		table = null;
 	}
 
 	@Test
-	public void test() {
-		assertEquals(52, deck.getCardsInDeck().size());
-		assertEquals(52, deck.getCardsRemaining());
-		assertEquals(52, deck.getCardsInDeck().size());
+	public void buildDeck() {
+		assertEquals(52, table.getShoe().size());
+		table.getShoe().remove(0);
+		assertEquals(51, table.getShoe().size());
+		assertEquals(10000.00, table.getDealer().getBank(), 0);
+	}
+
+	@Test
+	public void dealCards() {
+		table.dealInitialHand();
+//		assertEquals(2, table.getPlayers().size());
+		assertEquals(2, table.getPlayers().get(0).getHand().size());
+//		assertEquals(2, table.getPlayers().get(1).getHand().size());
+		assertEquals(2, table.getDealer().getHand().size());
 	}
 
 }

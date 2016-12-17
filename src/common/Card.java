@@ -9,7 +9,7 @@ public class Card implements Comparable<Card> {
 		super();
 		this.rank = rank;
 		this.suit = suit;
-		this.value = value;
+		this.value = value+1;
 	}
 
 	Rank getRank() {

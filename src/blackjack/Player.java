@@ -7,11 +7,12 @@ public class Player {
 
 	public Player(String name) {
 		super();
+		this.hand = new Hand();
 		this.name = name;
 		this.bank = 0.0;
 	}
 	public Player(double bank) {
-		super();
+		this("dealer");
 		this.bank = bank;
 	}
 
