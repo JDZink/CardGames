@@ -83,7 +83,7 @@ public class Player {
 
 	public void showHand(int index) {
 		System.out.println("\t" + this.getHand().get(index).getRank() + " of " + this.getHand().get(index).getSuit());
-		System.out.println("\uf0a0\uf0a1\uf0a2\uf0a3");
+
 	}
 
 	public String getName() {
