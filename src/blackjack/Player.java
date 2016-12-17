@@ -1,39 +1,96 @@
 package blackjack;
 
+import java.util.Scanner;
+
+import common.Card;
+
 public class Player {
 	private Hand hand;
 	private double bank;
 	private String name;
+	Scanner kb;
 
 	public Player(String name) {
 		super();
 		this.hand = new Hand();
 		this.name = name;
 		this.bank = 0.0;
+		this.kb = new Scanner(System.in);
 	}
+
 	public Player(double bank) {
 		this("dealer");
 		this.bank = bank;
 	}
 
-	public static void hit() {
+	public boolean playerTurn() {
+		System.out.println(getName() + " your hand is: ");
+		showHand();
+		if (handTotal()> 21){
+			System.out.println("YOU BUSTED LOSER!");
+			return false;
+		}
+		System.out.println("\nYour current total is " + handTotal() + "\nWould you like to [H]it or [S]tay");
+		if (kb.next().equalsIgnoreCase("h")) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	public static void stay() {
+	public int handTotal() {
+		int i = 0;
+		int aces = 0;
+		for (Card card : hand) {
+			if (card.getValue() > 10){
+				i += 10;
+			} else if(card.getValue() == 1 ){
+				aces ++;
+				i++;
+			}else {
+				i += card.getValue();
+			}
+			for(int j = 0; j<aces; j++){
+				if (i + 10 <= 21){
+					i+=10;
+				}
+			}
+		}
+		return i;
 	}
 
-	public static void fold() {
+	public void hit() {
 	}
 
-	public static void bet() {
+	public void stay() {
+	}
+
+	public void fold() {
+	}
+
+	public void bet() {
 
 	}
 
-	public static void showHand() {
-
+	public void showHand() {
+		for (Card card : hand) {
+			System.out.println(card.getRank() + " of " + card.getSuit());
+		}
 	}
 
-	Hand getHand() {
+	public void showHand(int index) {
+		System.out.println(this.getHand().get(index).getRank() + " of " + this.getHand().get(index).getSuit());
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Hand getHand() {
 		return hand;
 	}
 

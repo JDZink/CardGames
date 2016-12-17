@@ -12,27 +12,27 @@ public class Card implements Comparable<Card> {
 		this.value = value+1;
 	}
 
-	Rank getRank() {
+	public Rank getRank() {
 		return rank;
 	}
 
-	void setRank(Rank rank) {
+	public void setRank(Rank rank) {
 		this.rank = rank;
 	}
 
-	Suit getSuit() {
+	public Suit getSuit() {
 		return suit;
 	}
 
-	void setSuit(Suit suit) {
+	public void setSuit(Suit suit) {
 		this.suit = suit;
 	}
 
-	int getValue() {
+	public int getValue() {
 		return value;
 	}
 
-	void setValue(int value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 
