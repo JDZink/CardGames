@@ -26,14 +26,17 @@ public class Player {
 	public boolean playerTurn() {
 		System.out.println(getName() + " your hand is: ");
 		showHand();
-		if (handTotal()> 21){
-			System.out.println("YOU BUSTED LOSER!");
+		int ptot = handTotal();
+		if (ptot> 21){
+			System.out.println("Your total is " + ptot +  ". YOU BUSTED LOSER!\n");
 			return false;
 		}
-		System.out.println("\nYour current total is " + handTotal() + "\nWould you like to [H]it or [S]tay");
+		System.out.println("\nYour current total is " + ptot + "\nWould you like to [H]it or [S]tay");
 		if (kb.next().equalsIgnoreCase("h")) {
+			System.out.println("Player hits!\n");
 			return true;
 		} else {
+			System.out.println("Player Stays.\n");
 			return false;
 		}
 	}
@@ -50,10 +53,10 @@ public class Player {
 			}else {
 				i += card.getValue();
 			}
-			for(int j = 0; j<aces; j++){
-				if (i + 10 <= 21){
-					i+=10;
-				}
+		}
+		for(int j = 0; j<aces; j++){
+			if (i + 10 <= 21){
+				i+=10;
 			}
 		}
 		return i;
@@ -74,12 +77,13 @@ public class Player {
 
 	public void showHand() {
 		for (Card card : hand) {
-			System.out.println(card.getRank() + " of " + card.getSuit());
+			System.out.println("\t" + card.getRank() + " of " + card.getSuit());
 		}
 	}
 
 	public void showHand(int index) {
-		System.out.println(this.getHand().get(index).getRank() + " of " + this.getHand().get(index).getSuit());
+		System.out.println("\t" + this.getHand().get(index).getRank() + " of " + this.getHand().get(index).getSuit());
+		System.out.println("\uf0a0\uf0a1\uf0a2\uf0a3");
 	}
 
 	public String getName() {
@@ -104,6 +108,9 @@ public class Player {
 
 	void setBank(double bank) {
 		this.bank = bank;
+	}
+	public void printSplash(){
+		System.out.println("" );
 	}
 
 }

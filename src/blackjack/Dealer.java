@@ -18,14 +18,17 @@ public class Dealer extends Player {
 		int ht = handTotal();
 		System.out.println("current total is " + ht );
 		if (ht <= 16) {
+			System.out.println("Dealer Hits!\n");
 			return true;
 		} else if (ht ==17){
 			for (Card card : getHand()) {
 				if (card.getValue() == 1){
+					System.out.println("Dealer Hits!\n");
 					return true;
 				}
 			}
 		} else {
+			System.out.println("Dealer Stays.\n");
 			return false;
 		}
 		//unreachable code

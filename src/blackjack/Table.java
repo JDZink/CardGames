@@ -72,7 +72,7 @@ public class Table {
 		for (Player player : players) {
 			int playerTot = player.handTotal();
 			if (playerTot < 22) {
-				if (playerTot > dealerTot) {
+				if (playerTot > dealerTot || dealerTot > 21) {
 					System.out.println(player.getName() + " You beat the dealers " + dealerTot + " with " + playerTot
 							+ ". CONGRATULATIONS!");
 				} else if (playerTot == dealerTot) {
